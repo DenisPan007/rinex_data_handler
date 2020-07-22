@@ -64,7 +64,7 @@ def get_ephemeris_from_nearest_reference_time(ephemeris_list, epoch):
     nearest_index = 0
     for index, entry in enumerate(ephemeris_list):
         ref_time = entry.time
-        if abs(epoch - ref_time) < abs(epoch - nearest_time):
+        if abs(epoch - ref_time) < abs(epoch - nearest_time) and epoch - ref_time >= np.timedelta64(seconds=0):
             nearest_time = ref_time
             nearest_index = index
     return ephemeris_list[nearest_index]
